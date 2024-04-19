@@ -10,7 +10,7 @@ const RegisterUser = () => {
               <div className="w-20 h-20 rounded-full bg-gray-200"></div>
             </div>
             <h1 className="text-center text-xl text-blue-500 mb-4">
-              Registro de Usuario
+              Registro de Usuarios
             </h1>
             <form>
               <div className="mb-4">
