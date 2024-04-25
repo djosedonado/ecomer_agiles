@@ -1,83 +1,83 @@
 "use client";
+import { ButtonForm, InputField, LinkText, useForm } from "../components/index";
 
 const RegisterUser = () => {
+  const { form, handleChange,resetForm } = useForm({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
+    resetForm();
+  };
   return (
     <div className="container mx-auto">
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-5">
         <div className="w-full lg:w-1/2 md:w-2/3">
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="grid place-items-center mb-4">
-              <div className="w-20 h-20 rounded-full bg-gray-200"></div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-12 h-12"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z"
+                />
+              </svg>
             </div>
             <h1 className="text-center text-xl text-blue-500 mb-4">
               Registro de Usuarios
             </h1>
-            <form>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Nombre
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="nombre"
-                  type="text"
+            <form onSubmit={handleSubmit}>
+              <div className="columns-2">
+                <InputField
+                  text="firstname"
+                  type="firstname"
                   placeholder="Nombre"
+                  onChange={handleChange}
+                  value={form.firstname}
                 />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Apellido
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="apellido"
-                  type="text"
+                <InputField
+                  text="lastname"
+                  type="lastname"
                   placeholder="Apellido"
+                  onChange={handleChange}
+                  value={form.lastname}
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="email"
-                  type="email"
-                  placeholder="Email"
-                />
+              <InputField
+                text="email"
+                type="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={form.email}
+              />
+              <InputField
+                text="password"
+                type="password"
+                placeholder="Password"
+                onChange={handleChange}
+                value={form.password}
+              />
+              <div className="text-center">
+                <ButtonForm title="Registarse" />
               </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Password
-                </label>
-                <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
-                  type="password"
-                  placeholder="Password"
-                />
-              </div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                Registrar
-              </button>
             </form>
-            <p className="text-center text-sm mt-4">
-              ¿Ya tienes una cuenta?{" "}
-              <a href="#" className="text-blue-500">
-                Logueate
-              </a>
-            </p>
+            <LinkText
+              text="¿Ya tienes una cuenta?"
+              route="/login"
+              linkText="Logueate Aqui"
+            />
           </div>
         </div>
       </div>

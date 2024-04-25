@@ -1,33 +1,33 @@
-import { HeartIcon } from '@radix-ui/react-icons'
-import Link from 'next/link'
+import { HeartIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function Home() {
   const Data = [
     {
       id: 1,
-      title: 'Categoria 1',
+      title: "Categoria 1",
       image:
-        'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*'
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
       id: 2,
-      title: 'Categoria 2',
+      title: "Categoria 2",
       image:
-        'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*'
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
       id: 3,
-      title: 'Categoria 3',
+      title: "Categoria 3",
       image:
-        'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*'
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*",
     },
     {
       id: 4,
-      title: 'Categoria 4',
+      title: "Categoria 4",
       image:
-        'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*'
-    }
-  ]
+        "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1702458113-800_800_F5C3D514CF31D1386743BC5AB8319D35mp.png?crop=1xw:1xh;center,top&resize=980:*",
+    },
+  ];
 
   return (
     <main className="mx-auto flex max-w-[1500px] flex-col gap-y-10 p-5">
@@ -39,12 +39,16 @@ export default function Home() {
           </span>
           <h1>Tienda Online de productos premium</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, qui. Dolore quaerat
-            sint iusto dolor, eius quas, quibusdam labore sed autem eligendi vitae nesciunt?
-            Laboriosam, praesentium. Suscipit perspiciatis commodi quod?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate,
+            qui. Dolore quaerat sint iusto dolor, eius quas, quibusdam labore
+            sed autem eligendi vitae nesciunt? Laboriosam, praesentium. Suscipit
+            perspiciatis commodi quod?
           </p>
-          <Link href="/productos">
-            <button className="rounded-[4px] bg-black px-2 py-1 text-white" type="button">
+          <Link href="./componentes/pantallas/productos">
+            <button
+              className="rounded-[4px] bg-black px-2 py-1 text-white"
+              type="button"
+            >
               Comprar ahora
             </button>
           </Link>
@@ -57,7 +61,10 @@ export default function Home() {
         <h3>Categorias más populares</h3>
         <div className="flex gap-x-10">
           {Data.map(({ id, title, image }) => (
-            <div key={id} className="relative flex flex-col items-center gap-y-2">
+            <div
+              key={id}
+              className="relative flex flex-col items-center gap-y-2"
+            >
               <button
                 className="absolute right-2 top-2 grid  place-content-center rounded-full bg-white p-1 hover:shadow-md"
                 type="button"
@@ -75,5 +82,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }

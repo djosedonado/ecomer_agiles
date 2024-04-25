@@ -1,6 +1,18 @@
 "use client";
 
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+interface User {
+  email: string;
+  password: string;
+}
+
 const Login = () => {
+  const router = useRouter();
+  const [user, setUser] = useState<User>({ email: "", password: "" });
+
   return (
     <div className="container mx-auto">
       <div className="flex justify-center">
@@ -9,8 +21,6 @@ const Login = () => {
             <div className="grid place-items-center mb-4">
               <div className="w-20 h-20 rounded-full bg-gray-200">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
@@ -29,9 +39,7 @@ const Login = () => {
             </h1>
             <form>
               <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
+                <label className="block text-gray-700 text-sm font-bold mb-2">
                   Email
                 </label>
                 <input
@@ -39,12 +47,14 @@ const Login = () => {
                   id="email"
                   type="email"
                   placeholder="Email"
+                  value={user.email ?? ""}
+                  onChange={(e) => {
+                    setUser({ ...user, email: e.target.value });
+                  }}
                 />
               </div>
               <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
+                <label className="block text-gray-700 text-sm font-bold mb-2">
                   Password
                 </label>
                 <input
@@ -52,18 +62,38 @@ const Login = () => {
                   id="password"
                   type="password"
                   placeholder="Password"
+                  value={user.password ?? ""}
+                  onChange={(e) => {
+                    setUser({ ...user, password: e.target.value });
+                  }}
                 />
               </div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-              >
-                INGRESAR
-              </button>
+
+              <div className="flex justify-center items-center">
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  type="button"
+                  onClick={async () => {
+                    const cambio = await axios.post(
+                      "https://backend-ecomer.onrender.com/login",
+                      {
+                        ...user,
+                      }
+                    );
+
+                    if (cambio.status === 200) {
+                      localStorage.setItem("Token", cambio.data.token);
+                      router.push("/");
+                    }
+                  }}
+                >
+                  INGRESAR
+                </button>
+              </div>
             </form>
             <p className="text-center text-sm mt-4">
               ¿No tienes cuenta?{" "}
-              <a href="#" className="text-blue-500">
+              <a href="/register" className="text-blue-500">
                 Regístrate
               </a>
             </p>
