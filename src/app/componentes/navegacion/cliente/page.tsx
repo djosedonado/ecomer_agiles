@@ -2,9 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useAuthStore } from "@/stores";
 
 const MenuCliente = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const useAuth = useAuthStore(state => state.logoutUser);
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
@@ -78,7 +80,7 @@ const MenuCliente = () => {
                 <Link
                   href="/"
                   className="block py-2 px-4 text-gray-800 hover:bg-gray-200"
-                  onClick={toggleMenu}
+                  onClick={useAuth}
                 >
                   Cerrar Sesión
                 </Link>

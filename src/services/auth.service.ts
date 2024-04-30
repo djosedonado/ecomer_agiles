@@ -39,9 +39,7 @@ export class AuthService {
 
     try {
       const { data } = await api.get<LoginResponse>('/verify/status');
-
       return data;
-
     } catch (error) {
       console.log(error);
       throw new Error('UnAuthorized');

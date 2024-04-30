@@ -2,7 +2,8 @@ import axios from "axios";
 import { useAuthStore } from "../stores/index";
 
 const api = axios.create({
-  baseURL: "https://backend-ecomer.onrender.com",
+  baseURL: "http://localhost:4000",
+  withCredentials: true,
 });
 
 api.interceptors.request.use((config) => {
@@ -10,10 +11,14 @@ api.interceptors.request.use((config) => {
   // console.log({token});
 
   if (token) {
-    config.headers["Authorization"] = `Bearer ${token}`;
+    config.headers["authorization"] = `Bearer ${token}`;
   }
 
   return config;
+});
+
+api.interceptors.response.use((response) => {
+  return response;
 });
 
 export { api };

@@ -17,7 +17,7 @@ const CarritoCompras = () => {
   };
 
   return (
-    <div className="container mt-8">
+    <div className="container mt-8 p-8 flex-auto justify-center content-center place-items-center items-center text-center">
       <h4 className="font-semibold text-gray-700 mb-10">CARRITO DE COMPRAS</h4>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="lg:col-span-9 md:col-span-8 sm:col-span-12 xs:col-span-12">
@@ -69,17 +69,24 @@ const CarritoCompras = () => {
 
         <div className="lg:col-span-3 md:col-span-4 sm:col-span-6 xs:col-span-12">
           <div className="border border-gray-300 rounded-md p-4">
-            <h6 className="font-semibold text-lg">
-              SUBTOTAL ({miArray.length}) PRODUCTOS
-            </h6>
-            <p className="font-semibold">${Math.round(suma * 100) / 100}</p>
+            <div className="columns-2">
+              <h6 className="font-semibold text-lg">
+                ({miArray.length}) PRODUCTOS
+              </h6>
+              <div className="flex">
+                <h5>SUBTOTAL:</h5>
+                <p className="font-semibold">${Math.round(suma * 100) / 100}</p>
+              </div>
+            </div>
             <hr className="my-4 border-gray-200" />
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full"
-              onClick={realizarCompra}
-            >
-              REALIZAR COMPRA
-            </button>
+            <div className="justify-center text-center">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-60"
+                onClick={realizarCompra}
+              >
+                REALIZAR COMPRA
+              </button>
+            </div>
           </div>
         </div>
       </div>

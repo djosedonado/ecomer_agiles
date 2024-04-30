@@ -7,10 +7,39 @@ import {
   SelectFrom,
   TablesList,
 } from "../components/index";
-import { Dialog, Transition } from '@headlessui/react';
+import { EditDialog } from "./editorBook";
 
 const Book = () => {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [editItemId, setEditItemId] = useState<number | null>(null);
+  const [editItemData, setEditItemData] = useState<any>({});
+
+  const openEditDialog = (id: number) => {
+    const item = users.find((user) => user.id === id);
+    if (item) {
+      setEditItemData(item);
+      setEditItemId(id);
+      setIsEditDialogOpen(true);
+    }
+  };
+
+  const closeEditDialog = () => {
+    setIsEditDialogOpen(false);
+    setEditItemId(null);
+    setEditItemData({});
+  };
+
+  const saveEditDialog = (field: string, value: string) => {
+    // Actualiza el elemento con el nuevo valor
+    const updatedUsers = users.map((user) =>
+      user.id === editItemId ? { ...user, [field]: value } : user
+    );
+    // Guarda los cambios
+    console.log(updatedUsers);
+    // Cierra el diálogo
+    closeEditDialog();
+  };
+
   const { form, handleChange, resetForm } = useForm({
     title: "",
     author: "",
@@ -59,6 +88,7 @@ const Book = () => {
 
   const handleEdit = (id: number) => {
     console.log(`Editar elemento con ID ${id}`);
+    openEditDialog(id);
   };
 
   const handleDelete = (id: number) => {
@@ -114,6 +144,15 @@ const Book = () => {
         />
       </div>
       {/* --------------  Editar Producto --------------------- */}
+      <EditDialog
+        onSelect={handleSelect}
+        options={Selector}
+        open={isEditDialogOpen}
+        onClose={closeEditDialog}
+        onSave={saveEditDialog}
+        field="category"
+        value={form.author}
+      />
     </div>
   );
 };
