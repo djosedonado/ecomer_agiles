@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useAuthStore } from "../../stores/index";
@@ -26,9 +25,9 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto pt-5">
       <div className="flex justify-center">
-        <div className="w-full lg:w-2/3">
+        <div className="w-full lg:w-2/4">
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <div className="grid place-items-center mb-4">
               <div className="w-20 h-20 rounded-full bg-gray-200">
@@ -51,8 +50,10 @@ const Login = () => {
             <h1 className="text-center text-xl text-blue-500 mb-4">
               Ingrese sus usuario
             </h1>
-            <form onSubmit={onSubmit}>
-              <div className="mb-4">
+            <form onSubmit={onSubmit} className="p-5">
+              <div className="mb-4 w-2/3 mx-auto">
+                {" "}
+                {/* Centrar en columna */}
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                   Email
                 </label>
@@ -67,7 +68,9 @@ const Login = () => {
                   }}
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-4 w-2/3 mx-auto">
+                {" "}
+                {/* Centrar en columna */}
                 <label className="block text-gray-700 text-sm font-bold mb-2">
                   Password
                 </label>
@@ -92,6 +95,7 @@ const Login = () => {
                 </button>
               </div>
             </form>
+
             <p className="text-center text-sm mt-4">
               ¿No tienes cuenta?{" "}
               <a href="/register" className="text-blue-500">

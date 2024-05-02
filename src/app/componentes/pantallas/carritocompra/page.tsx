@@ -1,9 +1,16 @@
 "use client";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import { ProductoArray } from "../../../data/dataPrueba";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { useAuthStore } from "../../../../stores/index";
 
 const CarritoCompras = () => {
+  const isAuth = useAuthStore((state) => state.status === "unauthorized");
+  useLayoutEffect(() => {
+    if (isAuth) {
+      redirect("/login");
+    }
+  });
   const miArray = ProductoArray;
   const router = useRouter();
 

@@ -1,8 +1,12 @@
 "use client";
 import { ButtonForm, InputField, LinkText, useForm } from "../components/index";
+import { useUsers } from "../../stores/index";
+import { User } from "../../interfaces/index";
+
 
 const RegisterUser = () => {
-  const { form, handleChange,resetForm } = useForm({
+  const { addData, users } = useUsers();
+  const { form, handleChange, resetForm } = useForm({
     firstname: "",
     lastname: "",
     email: "",
@@ -11,7 +15,13 @@ const RegisterUser = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
+    const formData: User = {
+      firstName: form.firstname,
+      lastName: form.lastname,
+      email: form.email,
+      password: form.password,
+    };
+    addData(formData);
     resetForm();
   };
   return (

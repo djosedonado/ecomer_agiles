@@ -23,6 +23,7 @@
     "react-image-upload": "^3.0.1",
     "react-images-uploading": "^3.1.7",
     "react-router-dom": "^6.23.0",
+    "sweetalert2": "^11.10.8",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
