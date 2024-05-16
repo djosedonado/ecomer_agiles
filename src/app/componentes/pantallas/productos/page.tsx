@@ -9,14 +9,14 @@ const pantalla = () => {
 
   return (
     <div className="mt-8">
-      <h2 className="font-semibold text-gray-700 mb-10">Productos</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <h1 className="font-semibold text-gray-900 mb-50">Productos</h1>
+      <div className="flex gap-x-10">
         {miArray.map((data) => (
           <div key={data.id} className="h-64 bg-gray-200 m-4">
             <div className="relative bg-white rounded-lg overflow-hidden shadow-md">
               {/* Imagen */}
               <img
-                className="w-full h-40 object-cover"
+                className="h-[200px] w-[200px] rounded-[4px] bg-gradient-to-b from-gray-300 to-white object-cover p-5"
                 src={data.image}
                 alt="Producto"
               />

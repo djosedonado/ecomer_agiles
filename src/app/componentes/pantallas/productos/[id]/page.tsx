@@ -33,7 +33,7 @@ const DetalleProducto = () => {
               </select>
             </div>
             <div className="p-4">
-              <Link href={"../pantallas/carritocompra"}>
+              <Link href={"../carritocompra"}>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-full">
                   Agregar a Carrito
                 </button>

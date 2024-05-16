@@ -35,7 +35,7 @@ const EditarUsuario = () => {
               />
             </div>
             <div className="flex items-center">
-              <input type="checkbox" id="admin" disabled className="mr-2" />
+              <input type="checkbox" id="admin" className="mr-2" />
               <label htmlFor="admin" className="select-none">
                 Administrador
               </label>
